@@ -44,11 +44,11 @@ namespace TaroTime.Persistence.Contexts
     .HasForeignKey(a => a.UserId)
     .OnDelete(DeleteBehavior.Restrict); // ❌ Cascade yox
 
-modelBuilder.Entity<Appointment>()
-    .HasOne(a => a.Expert)
-    .WithMany()
-    .HasForeignKey(a => a.ExpertId)
-    .OnDelete(DeleteBehavior.Cascade); // ✅ yalnız birində cascade
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Expert)
+                .WithMany()
+                .HasForeignKey(a => a.ExpertId)
+                .OnDelete(DeleteBehavior.Cascade); // ✅ yalnız birində cascade
 
             modelBuilder.Entity<CompatibilityZodiac>()
     .HasOne(c => c.User)
@@ -92,13 +92,13 @@ modelBuilder.Entity<Appointment>()
                         if (!isDeletedChanged)
                         {
                             entry.Entity.UpdatedAt = DateTime.UtcNow;
-                        }    
-                       
+                        }
+
                         break;
                     case EntityState.Added:
                         entry.Entity.CreatedAt = DateTime.UtcNow;
                         break;
-                   
+
                 }
             }
         }
